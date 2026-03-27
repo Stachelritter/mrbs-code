@@ -219,6 +219,7 @@ class SessionHandlerCookie implements SessionHandlerInterface, SessionUpdateTime
     if ($old_id === false)
     {
       self::setId($id);
+      self::setExpiry($expiry);
     }
   }
 
@@ -239,7 +240,7 @@ class SessionHandlerCookie implements SessionHandlerInterface, SessionUpdateTime
   }
 
 
-  private static function getID()
+  private static function getId()
   {
     $sql = "SELECT variable_content
               FROM " . _tbl('variables') . "
@@ -249,10 +250,22 @@ class SessionHandlerCookie implements SessionHandlerInterface, SessionUpdateTime
   }
 
 
-  private static function setId(string $id)
+  private static function setExpiry(int $expiry) : void
+  {
+    self::setVariable('session_expiry', (string)$expiry);
+  }
+
+
+  private static function setId(string $id) : void
+  {
+    self::setVariable('session_id', $id);
+  }
+
+
+  private static function setVariable(string $name, string $value) : void
   {
     $sql_params = [];
-    $data = ['variable_name' => 'session_id', 'variable_content' => $id];
+    $data = ['variable_name' => $name, 'variable_content' => $value];
     $sql = db()->syntax_upsert($data, _tbl('variables'), $sql_params, 'variable_name', ['id'], true);
     db()->command($sql, $sql_params);
   }
