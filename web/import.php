@@ -2,7 +2,6 @@
 declare(strict_types=1);
 namespace MRBS;
 
-use DateTimeZone;
 use MRBS\Form\ElementFieldset;
 use MRBS\Form\ElementInputHidden;
 use MRBS\Form\FieldInputCheckbox;
@@ -14,11 +13,9 @@ use MRBS\Form\FieldInputText;
 use MRBS\Form\FieldInputUrl;
 use MRBS\Form\FieldSelect;
 use MRBS\Form\Form;
-use MRBS\ICalendar\Calendar;
 use MRBS\ICalendar\ComponentFactory;
 use MRBS\ICalendar\Event;
 use MRBS\ICalendar\Property;
-use MRBS\ICalendar\RFC5545;
 use MRBS\ICalendar\RFC5545Exception;
 use ReflectionClass;
 use ZipArchive;
