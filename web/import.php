@@ -1051,6 +1051,10 @@ function get_fieldset_location_settings() : ElementFieldset
 
 function get_fieldset_other_settings() : ElementFieldset
 {
+  // TODO: If the auth type is 'db', then we could offer to create users if necessary.  Maybe only if the
+  // TODO: X-MRBS-USERNAME parameter is present?  And should the user details be updated if the display name
+  // TODO: and email address for an existing username have changed?  Or maybe just issue a list of differences?
+
   global $booking_types;
   global $import_default_type, $import_past, $skip;
 
