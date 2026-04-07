@@ -2853,11 +2853,13 @@ function get_field_entry_input(array $params) : Field
       $field->addSelectOptions($options, $params['value']);
       break;
 
+    /** @noinspection PhpMissingBreakStatementInspection */
     case 'FieldInputDatalist':
       $options = $datalist_options[$params['field']];
       $field->addDatalistOptions($options);
     // Drop through
 
+    /** @noinspection PhpMissingBreakStatementInspection */
     case 'FieldInputText':
       if (!empty($params['required']))
       {
