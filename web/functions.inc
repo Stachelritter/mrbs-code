@@ -1577,7 +1577,7 @@ function get_area(int $room) : int
 
   $area = db()->query1($sql, array($room));
 
-  return ($area < 0 ? 0 : (int) $area);
+  return max($area, 0);
 }
 
 
