@@ -1567,7 +1567,11 @@ function get_default_room(int $area) : int
 }
 
 
-// Return an area id for a given room
+/**
+ * Get the area id for a given room id
+ *
+ * @return int The area_id, or 0 if the room doesn't exist.
+ */
 function get_area(int $room) : int
 {
   $sql = "SELECT area_id
