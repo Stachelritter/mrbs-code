@@ -2469,10 +2469,10 @@ function cross_dst(int $start, int $end) : int
 
   // Calculate the modification using the DateTimeZone information rather than date('I', $time),
   // because not all DST transitions are 1 hour.  For example, Lord Howe Island in Australia
-  // has a 30 minute transition.
+  // has a 30-minute transition.
   $thisDateTimeZone = new DateTimeZone($timezone);
-  $startDateTime = new DateTime(date('c', $start), $thisDateTimeZone);
-  $endDateTime = new DateTime(date('c', $end), $thisDateTimeZone);
+  $startDateTime = (new DateTime('now', $thisDateTimeZone))->setTimestamp($start);
+  $endDateTime = (new DateTime('now', $thisDateTimeZone))->setTimestamp($end);
   $modification = $startDateTime->getOffset() - $endDateTime->getOffset();
 
   return $modification;
