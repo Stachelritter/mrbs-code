@@ -2473,9 +2473,7 @@ function cross_dst(int $start, int $end) : int
   $thisDateTimeZone = new DateTimeZone($timezone);
   $startDateTime = (new DateTime('now', $thisDateTimeZone))->setTimestamp($start);
   $endDateTime = (new DateTime('now', $thisDateTimeZone))->setTimestamp($end);
-  $modification = $startDateTime->getOffset() - $endDateTime->getOffset();
-
-  return $modification;
+  return $startDateTime->getOffset() - $endDateTime->getOffset();
 }
 
 
